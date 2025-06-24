@@ -4,7 +4,7 @@ import json
 import os
 import subprocess
 
-BASE_URL = "https://www.bizinfo.go.kr"
+BASE_URL = "https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/list.do"
 LIST_URL = f"{BASE_URL}/web/lay1/bbs/S1T122C128/AS/74/list.do"
 PARAMS = {
     "rows": 15,
