@@ -4,7 +4,6 @@ import json
 
 BASE_URL = "https://www.bizinfo.go.kr"
 LIST_URL = f"{BASE_URL}/web/lay1/bbs/S1T122C128/AS/74/list.do"
-
 PARAMS = {
     "rows": 15,
     "cpage": 1,
@@ -25,7 +24,7 @@ def crawl_all_pages():
 
         rows = soup.select(".table_list tbody tr")
         if not rows or "등록된 데이터가 없습니다" in soup.text:
-            break
+            break  # 더 이상 페이지 없음
 
         for row in rows:
             cols = row.find_all("td")
@@ -41,7 +40,7 @@ def crawl_all_pages():
                 "url": BASE_URL + title_tag["href"]
             })
 
-        page += 1
+        page += 1  # 다음 페이지로
 
     with open("notices.json", "w", encoding="utf-8") as f:
         json.dump(all_items, f, ensure_ascii=False, indent=2)
